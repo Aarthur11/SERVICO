@@ -1,0 +1,181 @@
+.page {
+    min-height: 100vh;
+    width: 100%;
+
+    background-color: #000;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: #fff;
+
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.main {
+    width: min(90vw, 360px);
+    min-height: 520px;
+
+    box-sizing: border-box;
+
+    background-color: #050505;
+
+    border: 4px solid #e5e5e5;
+    border-radius: 25px;
+
+    padding: 24px 20px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* Título */
+
+.main h1 {
+    width: 100%;
+
+    margin: 0 0 5px 0;
+    padding: 11px 10px;
+
+    box-sizing: border-box;
+
+    background-color: #94a5bc;
+    color: #fff;
+
+    border-radius: 6px;
+
+    text-align: center;
+
+    font-size: clamp(16px, 4vw, 19px);
+    font-weight: 400;
+}
+
+/* Opções */
+
+.main label {
+    width: 100%;
+    min-height: 62px;
+
+    box-sizing: border-box;
+
+    border: 2px solid #7d91aa;
+    border-radius: 7px;
+
+    padding: 0 16px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    cursor: pointer;
+}
+
+.main label span {
+    color: #eee;
+
+    font-size: clamp(14px, 4vw, 17px);
+}
+
+/* Radio */
+
+.main input[type="radio"] {
+    appearance: none;
+
+    width: 20px;
+    height: 20px;
+
+    flex-shrink: 0;
+
+    border: 2px solid #7189a5;
+    border-radius: 50%;
+
+    background-color: transparent;
+
+    cursor: pointer;
+}
+
+.main input[type="radio"]:checked {
+    background-color: #94a5bc;
+
+    box-shadow: inset 0 0 0 4px #050505;
+}
+
+/* Link */
+
+.main a {
+    width: 100%;
+
+    margin-top: auto;
+
+    text-decoration: none;
+}
+
+/* Botão */
+
+.main a button {
+    width: 100%;
+    height: 44px;
+
+    border: none;
+    border-radius: 6px;
+
+    background-color: #0d1e31;
+    color: #fff;
+
+    font-size: clamp(14px, 4vw, 17px);
+
+    cursor: pointer;
+}
+
+.main a button:hover {
+    background-color: #7b8fa8;
+}
+
+/* Celulares pequenos */
+
+@media (max-width: 400px) {
+    .page {
+        padding: 12px;
+    }
+
+    .main {
+        width: 94vw;
+        padding: 20px 16px;
+        border-radius: 22px;
+    }
+
+    .main label {
+        min-height: 58px;
+    }
+}
+
+/* Telas muito pequenas */
+
+@media (max-height: 600px) {
+    .page {
+        align-items: flex-start;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        overflow-y: auto;
+    }
+
+    .main {
+        min-height: auto;
+    }
+}
+.main .continuar {
+    width: 100%;
+    min-height: 44px;
+    margin-top: auto;
+    border: 0;
+    border-radius: 6px;
+    background: #012753;
+    color: #fff;
+    font-size: clamp(14px, 4vw, 17px);
+    cursor: pointer;
+}
+.main .continuar:hover:not(:disabled) { background: #7b8fa8; }
+.main .continuar:disabled { opacity: .55; cursor: not-allowed; }

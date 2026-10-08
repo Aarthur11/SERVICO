@@ -1,69 +1,53 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+"use client";
 
-export default function Home() {
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import styles from "./login.module.css";
+
+export default function LoginPage() {
+  const router = useRouter();
+  const [erro, setErro] = useState("");
+
+  useEffect(() => {
+    if (sessionStorage.getItem("sessaoAtiva") === "true" && sessionStorage.getItem("usuario")) {
+      router.replace("/servico");
+    }
+  }, [router]);
+
+  function entrar(event) {
+    event.preventDefault();
+    const form = new FormData(event.currentTarget);
+    const usuario = String(form.get("usuario") || "").trim();
+    const senha = String(form.get("senha") || "");
+
+    if (usuario !== "user1" || senha !== "4321") {
+      setErro("Usuário ou senha incorretos.");
+      return;
+    }
+
+    sessionStorage.setItem("usuario", usuario);
+    sessionStorage.setItem("sessaoAtiva", "true");
+    sessionStorage.removeItem("agendamentos");
+    sessionStorage.removeItem("agendamentoAtual");
+    router.replace("/servico");
+  }
+
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>
-            To get started, edit the{" "}
-            <code className={styles.code}>page.js</code> file.
-          </h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+    <main className={styles.page}>
+      <section className={styles.card}>
+        <p className={styles.marca}>AGENDA</p>
+        <h1>Entrar</h1>
+        <p className={styles.descricao}>Acesse para ver seus agendamentos.</p>
+        <form className={styles.form} onSubmit={entrar}>
+          <label htmlFor="usuario">Usuário</label>
+          <input id="usuario" name="usuario" autoComplete="username" placeholder="Digite seu usuário" required />
+          <label htmlFor="senha">Senha</label>
+          <input id="senha" name="senha" type="password" autoComplete="current-password" placeholder="Digite sua senha" required />
+          {erro && <p className={styles.erro} role="alert">{erro}</p>}
+          <button type="submit">Entrar</button>
+        </form>
+        <p className={styles.dica}>Acesso de demonstração: user1 / 4321</p>
+      </section>
+    </main>
   );
 }

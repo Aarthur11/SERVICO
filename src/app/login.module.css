@@ -1,0 +1,102 @@
+.page {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: #000;
+  color: #f4f4f4;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.card {
+  width: min(100%, 360px);
+  padding: 26px 22px 20px;
+  border: 3px solid #e5e5e5;
+  border-radius: 24px;
+  background: #050505;
+}
+
+.marca {
+  margin: 0 0 12px;
+  color: #a5b6cb;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.card h1 {
+  margin: 0;
+  padding: 11px;
+  border-radius: 6px;
+  background: #94a5bc;
+  color: #fff;
+  text-align: center;
+  font-size: 19px;
+  font-weight: 400;
+}
+
+.descricao {
+  margin: 18px 0 22px;
+  color: #dedede;
+  font-size: 15px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.form label {
+  margin-top: 4px;
+  color: #f0f0f0;
+  font-size: 15px;
+}
+
+.form input {
+  width: 100%;
+  min-height: 46px;
+  padding: 0 12px;
+  border: 2px solid #7d91aa;
+  border-radius: 7px;
+  outline: none;
+  background: #050505;
+  color: #fff;
+  font-size: 15px;
+}
+
+.form input:focus {
+  border-color: #a5b6cb;
+}
+
+.form input::placeholder {
+  color: #9da3ac;
+}
+
+.form button {
+  min-height: 46px;
+  margin-top: 14px;
+  border: 0;
+  border-radius: 6px;
+  background: #647991;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.form button:hover {
+ background: #012753;
+}
+
+.erro {
+  margin: 3px 0 0;
+  color: #ff9f9f;
+  font-size: 14px;
+}
+
+.dica {
+  margin: 16px 0 0;
+  color: #aeb5bf;
+  text-align: center;
+  font-size: 12px;
+}
